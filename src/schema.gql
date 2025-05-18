@@ -1,0 +1,81 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Employee {
+  id: ID!
+  name: String!
+  job_title: String!
+}
+
+"""Employee Entity"""
+type EmployeeEntity {
+  """Unique ID"""
+  id: Int!
+
+  """Full Name of the Employee"""
+  name: String!
+
+  """Username for authentication"""
+  username: String!
+
+  """Password (hashed for security)"""
+  password: String!
+
+  """Position of the Employee"""
+  position: String!
+
+  """Latitude of the Employee location"""
+  latitude: String!
+
+  """Longitude of the Employee location"""
+  longitude: String!
+
+  """Lock Location"""
+  lock_location: String!
+
+  """Mobile ID of the Employee"""
+  mobile_id: String!
+
+  """Distance from work location"""
+  distance_work: String!
+}
+
+type Attendance {
+  id: Int!
+  name: [String!]!
+  employeeId: Int
+  employeeName: String
+  nik: String
+  hari: String
+  tanggal_absen: String!
+  time: Float
+  tangal: String!
+  punching_type: String
+  attendace_image: String
+}
+
+type Query {
+  getAttendanceByEmployeeIdToday(employeeId: Int!): [Attendance!]!
+  employees: [Employee!]!
+  validateEmployee(
+    """Trainer username"""
+    username: String!
+
+    """Trainer password"""
+    password: String!
+  ): EmployeeEntity!
+}
+
+type Mutation {
+  createAttendance(input: CreateAttendanceDto!): Int!
+  createEmployee(name: String!, job_title: String!): Employee!
+}
+
+input CreateAttendanceDto {
+  employeeId: Int!
+  nik: String!
+  punching_type: String!
+  tanggal_absen: String!
+  attendace_image: String!
+}
