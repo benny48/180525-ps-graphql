@@ -9,6 +9,8 @@ import { OdooAuthService } from './odoo-auth/odoo-auth.service';
 import { AttendanceService } from './attendance/attendance.service';
 import { AttendanceResolver } from './attendance/attendance.resolver';
 import { AttendanceModule } from './attendance/attendance.module';
+import { RedisService } from './redis/redis.service';
+import { RedisModule } from './redis/redis.module';
 
 @Module({
   imports: [
@@ -18,8 +20,9 @@ import { AttendanceModule } from './attendance/attendance.module';
     }),
     EmployeeModule,
     AttendanceModule,
+    RedisModule,
   ],
   controllers: [AppController],
-  providers: [AppService, OdooAuthService, AttendanceService, AttendanceResolver],
+  providers: [AppService, OdooAuthService, AttendanceService, AttendanceResolver, RedisService],
 })
 export class AppModule {}
