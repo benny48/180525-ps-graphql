@@ -5,14 +5,11 @@ export class Attendance {
   @Field(() => Int)
   id: number;
 
-  @Field(() => [String])
-  name: string; // String representation of [id, name] array from Odoo
+  @Field(() => Int)
+  employeeId: number; // Extracted employee ID from Odoo name field
 
-  @Field(() => Int, { nullable: true })
-  employeeId?: number; // Extracted employee ID from name array
-
-  @Field(() => String, { nullable: true })
-  employeeName?: string; // Extracted employee name from name array
+  @Field(() => String)
+  employeeName: string; // Extracted employee name from Odoo name field
 
   @Field(() => String, { nullable: true })
   nik?: string;
